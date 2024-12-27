@@ -1,5 +1,5 @@
 '''
-models/quiz.py
+app/models/quiz.py
 
 Classes:
     Quiz: Represents a quiz with a title, description, and related questions.

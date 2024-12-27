@@ -1,5 +1,5 @@
 '''
-models/question.py
+app/models/question.py
 
 This module defines the Question model for a Flask application.
 
