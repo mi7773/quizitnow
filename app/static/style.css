@@ -1,0 +1,51 @@
+/*
+app/static/style.css
+
+This stylesheet defines the global styling for the Flask application.
+
+Styles:
+	- General body styling for background and font.
+	- Headings (h1, h2) with color customization.
+	- Card components with rounded corners and no borders.
+	- Form controls with consistent border radius.
+	- Buttons with bold text styling.
+	- Radio input elements with custom borders.
+*/
+
+/* General body styling */
+body {
+	background-color: #f8f9fa;
+	font-family: Arial, sans-serif;
+	height: 100%;
+}
+
+/* Headings */
+h1, h2 {
+	color: #343a40;
+}
+
+/* Card components */
+.card {
+	border: none;
+	border-radius: 10px;
+}
+
+/* Card titles */
+.card-title {
+	font-weight: bold;
+}
+
+/* Form controls */
+.form-control {
+	border-radius: 5px;
+}
+
+/* Buttons */
+.btn {
+	font-weight: bold;
+}
+
+/* Radio inputs */
+input[type='radio'] {
+	border: 2px solid;
+}
