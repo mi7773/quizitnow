@@ -37,7 +37,7 @@ def quiz(quiz_id):
         quiz_id (int): The ID of the quiz to be displayed.
 
     Returns:
-        Response: 
+        Response:
             - If the request method is GET, it renders the quiz page
             with the quiz data.
             - If the request method is POST, it processes the results,
