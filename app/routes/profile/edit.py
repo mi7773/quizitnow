@@ -21,9 +21,9 @@ def edit():
     Handles the profile edit form submission and rendering.
 
     This route handles both the GET and POST requests for the profile
-    edit page. On a POST request, it updates the 
+    edit page. On a POST request, it updates the
     user's profile information. If the update is successful,
-    a success message is flashed. If there are errors (e.g., 
+    a success message is flashed. If there are errors (e.g.,
     username or email already in use), an error message is flashed.
 
     Returns:
