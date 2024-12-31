@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+	<!-- Main container for the dashboard page -->
+	<div class='container mt-5'>
+		<!-- Welcome header displaying the user's name -->
+		<h1 class='text-center mb-4'>Welcome, {{ current_user.name }}!</h1>
+
+		<!-- Row containing different cards for each dashboard section -->
+		<div class='row'>
+			<!-- Card for New Quizzes section -->
+			<div class='col-md-6 col-lg-4 mb-4'>
+				<div class='card h-100 shadow-lg'>
+					<div class='card-body'>
+						<!-- Title and description of New Quizzes section -->
+						<h5 class='card-title'>New Quizzes</h5>
+						<p class='card-text'>Quizzes you haven't attempted yet.</p>
+						<!-- Button to navigate to the New Quizzes page -->
+						<a href='{{ url_for('dashboard.new') }}' class='btn btn-primary w-100'>Check out!</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card for Leaderboard section -->
+			<div class='col-md-6 col-lg-4 mb-4'>
+				<div class='card h-100 shadow-sm'>
+					<div class='card-body'>
+						<!-- Title and description of Leaderboard section -->
+						<h5 class='card-title'>Leaderboard</h5>
+						<p class='card-text'>Top scores.</p>
+						<!-- Button to navigate to the Leaderboard page -->
+						<a href='{{ url_for('dashboard.leaderboard') }}' class='btn btn-primary w-100'>Check out!</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card for Old Quizzes section -->
+			<div class='col-md-6 col-lg-4 mb-4'>
+				<div class='card h-100 shadow-sm'>
+					<div class='card-body'>
+						<!-- Title and description of Old Quizzes section -->
+						<h5 class='card-title'>Old  Quizzes</h5>
+						<p class='card-text'>Quizzes you have already attempted.</p>
+						<!-- Button to navigate to the Old Quizzes page -->
+						<a href='{{ url_for('dashboard.old') }}' class='btn btn-primary w-100'>Check out!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
