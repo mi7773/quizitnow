@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ quiz.title }}{% endblock %}
+
+{% block content %}
+	<div class='container mt-5'>
+		<!-- Timer Display -->
+		<div class='progress mt-4'>
+			<!-- The progress bar for displaying quiz time remaining -->
+			<div id='progress-bar' class='progress-bar' role='progressbar' style='width: 100%;' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'>
+			</div>
+		</div>
+		<!-- Timer text showing the countdown -->
+		<p id='timer' class='mt-2'>01:05</p>
+
+		<div class='mt-4'>
+			<!-- Quiz title -->
+			<h2>{{ quiz.title }}</h2>
+			<!-- Quiz description -->
+			<p class='text-muted'>{{ quiz.description }}</p>
+
+			<!-- Form to submit quiz answers -->
+			<form method='post' class='mt-4' id='quiz-form'>
+				{% for question in quiz.questions %}
+					<!-- Loop through all the questions in the quiz -->
+					<div class='mb-4'>
+						<!-- Display the question number and text -->
+						<h5>{{ loop.index }}. {{ question.text }}</h5>
+						<div>
+							<!-- Loop through all four options for each question -->
+							{% for option in ['a', 'b', 'c', 'd'] %}
+								<div class='form-check'>
+									<!-- Radio button for each option -->
+									<input class='form-check-input' type='radio' name='{{ question.id }}' id='option_{{ option }}' value='{{ option.upper() }}'>
+									<!-- Label for each option -->
+									<label class='form-check-label' for='option_{{ option }}'>
+										{{ question['option_' + option] }}
+									</label>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
+				<!-- Submit button to submit the quiz -->
+				<button type='submit' class='btn btn-success w-100'>Submit Quiz</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script>
+		// Set the timer duration (in seconds)
+		let timer = 65;  // Set the timer to 5 minutes (in seconds)
+		const totalTime = timer;
+
+		// Start a countdown using setInterval
+		let countdown = setInterval(() => {
+			// Calculate the minutes and seconds from the remaining time
+			let minutes = Math.floor(timer / 60);
+			let seconds = timer % 60;
+
+			// Update the timer text displayed on the page
+			document.getElementById('timer').innerHTML = '0' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+			// Update the progress bar to reflect the remaining time
+			let progressPercentage = (timer / totalTime) * 100;
+			document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+			document.getElementById('progress-bar').setAttribute('aria-valuenow', progressPercentage);
+
+			// If the timer reaches 0, submit the form
+			if (timer == 0) {
+				clearInterval(countdown);
+				document.getElementById('quiz-form').submit();
+			}
+
+			// Decrease the timer by 1 second
+			timer--;
+		}, 1000);
+	</script>
+{% endblock %}
