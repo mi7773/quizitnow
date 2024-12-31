@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+	<div class='container mt-5'>
+		<div class='mt-4'>
+			<!-- Edit Profile Header -->
+			<h2>Edit Profile</h2>
+
+			<!-- Profile Edit Form -->
+			<form method='post' class='mt-4'>
+				<div class='mb-4'>
+					<!-- Input for First Name -->
+					<label for='First_name' class='form-label'>First Name</label>
+					<input type='text' id='first_name' name='first_name' class='form-control' value='{{ current_user.name }}' required>
+				</div>
+				<div class='mb-4'>
+					<!-- Input for Username -->
+					<label for='username' class='form-label'>Username</label>
+					<input type='text' id='username' name='username' class='form-control' value='{{ current_user.username }}' required>
+				</div>
+				<div class='mb-4'>
+					<!-- Input for Email -->
+					<label for='email' class='form-label'>Email</label>
+					<input type='email' id='email' name='email' class='form-control' value='{{ current_user.email }}' required>
+				</div>
+
+				<!-- Submit Button -->
+				<button type='submit' class='btn btn-primary w-100'>Save Changes</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}
