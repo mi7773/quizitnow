@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Old Quizzes{% endblock %}
+
+{% block content %}
+	<!-- Main container for the Old Quizzes page -->
+	<div class='container mt-5'>
+		<!-- Header for the Old Quizzes page -->
+		<h1 class='text-center mb-4'>Old Quizzes</h1>
+
+		<!-- Row to display all the old quizzes -->
+		<div class='row'>
+			<!-- Loop through the 'old' quizzes to display each one -->
+			{% for quiz in old %}
+				<!-- Card for displaying a single quiz -->
+				<div class='col-md-6 col-lg-4 mb-4'>
+					<div class='card h-100 shadow-sm'>
+						<div class='card-body'>
+							<!-- Quiz title displayed inside the card -->
+							<h5 class='card-title'>{{ quiz.title }}</h5>
+
+							<!-- Quiz description and the user's score for that quiz -->
+							<p class='card-text'>
+								{{ quiz.description }}<br>
+								You got <b>{{ score[quiz.id] }}</b> / {{ quiz.questions|length }} !
+							</p>
+
+							<!-- Button to try the quiz again, linking to the quiz details page -->
+							<a href='{{ url_for('quizzes.quiz', quiz_id=quiz.id) }}' class='btn btn-primary w-100'>Try again</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
