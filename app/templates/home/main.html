@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}QuizItNow{% endblock %}
+
+{% block content %}
+	<!-- Main container for the homepage -->
+	<div class='container py-5'>
+
+		<!-- Welcome header section -->
+		<div class='text-center'>
+			<h1 class='display-4 font-weight-bold'>Welcome to the
+				<!-- Highlighted QuizItNow brand name -->
+				<span class='text-primary'>QuizItNow</span>
+			</h1>
+			<!-- Description under the header -->
+			<p class='lead text-secondary'>Test your knowledge and improve your skills!</p>
+		</div>
+
+		<!-- Button section to redirect based on authentication status -->
+		<div class='d-flex justify-content-center mb-4'>
+			{% if current_user.is_authenticated %}
+				<!-- If the user is logged in, show a button to access quizzes -->
+				<a href={{ url_for('quizzes.main') }} class='btn btn-primary btn-lg mx-2'>Find your next quiz!</a>
+			{% else %}
+			<!-- If the user is not logged in, show buttons for Register and Login -->
+				<a href={{ url_for('auth.register') }} class='btn btn-primary btn-lg mx-2'>Register</a>
+				<a href={{ url_for('auth.login') }} class='btn btn-secondary btn-lg mx-2'>Login</a>
+			{% endif %}
+		</div>
+
+		<!-- Information card explaining how the platform works -->
+		<div class='card p-4 shadow-sm'>
+			<h3 class='card-title'>How it works</h3>
+			<p class='card-text'>Join, take a quiz, and track your progress. You can challenge yourself with new quizzes at any time.</p>
+		</div>
+	</div>
+{% endblock %}
