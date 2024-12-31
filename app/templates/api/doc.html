@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}API Documentation{% endblock %}
+
+{% block content %}
+	<div class='container mt-5'>
+		<h1 class='mb-4'>API Documentation</h1>
+
+		<!-- Overview Section -->
+		<div class='mb-5'>
+			<h2>Overview</h2>
+			<p>This document provides details about the available API endpoints for managing quizzes and questions.</p>
+		</div>
+
+		<!-- Endpoints Section -->
+		<div class='mb-5'>
+			<h2>Endpoints</h2>
+
+			<!-- Get Question by ID -->
+			<div class='mb-4'>
+				<h3>1. Get Question by ID</h3>
+				<p><strong>Endpoint:</strong> <code>GET /api/question/{id}</code>
+				<p><strong>Description:</strong> Retrives details of a specific question by its ID.</p>
+				<p><strong>Example Request:</strong></p>
+				<pre><code>GET http://127.0.0.1:5000/api/question/1</code></pre>
+				<p><strong>Response:</strong></p>
+				<pre><code>{
+  "correct_option": "a",
+  "id": 1,
+  "option_a": "Paris",
+  "option_b": "London",
+  "option_c": "Berlin",
+  "option_d": "Madrid",
+  "text": "What is the capital of France?"
+}</code></pre>
+			</div>
+
+			<!-- Get Quiz by ID -->
+			<div class='mb-4'>
+				<h3>2. Get Quiz by ID</h3>
+				<p><strong>Endpoint:</strong> <code>GET /api/quiz/{id}</code>
+				<p><strong>Description:</strong> Retrives details of a specific quiz by its ID.</p>
+				<p><strong>Example Request:</strong></p>
+				<pre><code>GET http://127.0.0.1:5000/api/quiz/1</code></pre>
+				<p><strong>Response:</strong></p>
+				<pre><code>{
+  "description": "This is a sample quiz.",
+  "id": 1,
+  "questions": [
+    {
+      "correct_option": "a",
+      "id": 1,
+      "option_a": "Paris",
+      "option_b": "London",
+      "option_c": "Berlin",
+      "option_d": "Madrid",
+      "text": "What is the capital of France?"
+    },
+    {
+      "correct_option": "b",
+      "id": 2,
+      "option_a": "3",
+      "option_b": "4",
+      "option_c": "5",
+      "option_d": "6",
+      "text": "What is 2 + 2?"
+    }
+  ],
+  "title": "Sample Quiz"
+}</code></pre>
+			</div>
+
+			<!-- Get Paginated List of Quizzes -->
+			<div class='mb-4'>
+				<h3>3. Get Paginated List of Quizzes</h3>
+				<p><strong>Endpoint:</strong> <code>GET /api/quizzes</code>
+				<p><strong>Description:</strong> Retrives a paginated list of all quizzes.</p>
+				<p><strong>Query Parameters:</strong></p>
+				<ul>
+					<li><strong>page</strong> (integer): The page number to retrieve.</li>
+					<li><strong>per_page</strong> (integer): The number of quizzes per page.</li>
+				</ul>
+				<p><strong>Example Request:</strong></p>
+				<pre><code>GET http://127.0.0.1:5000/api/quizzes?page=1&per_page=2</code></pre>
+				<p><strong>Response:</strong></p>
+				<pre><code>{
+  "current_page": 1,
+  "pages": 1,
+  "quizzes": [
+    {
+      "description": "This is a sample quiz.",
+      "id": 1,
+      "questions": [
+        {
+          "correct_option": "a",
+          "id": 1,
+          "option_a": "Paris",
+          "option_b": "London",
+          "option_c": "Berlin",
+          "option_d": "Madrid",
+          "text": "What is the capital of France?"
+        },
+        {
+          "correct_option": "b",
+          "id": 2,
+          "option_a": "3",
+          "option_b": "4",
+          "option_c": "5",
+          "option_d": "6",
+          "text": "What is 2 + 2?"
+        }
+      ],
+      "title": "Sample Quiz"
+    }
+  ],
+  "total": 1
+}</code></pre>
+			</div>
+
+			<!-- Get All Quizzes -->
+			<div class='mb-4'>
+				<h3>4. Get All Quizzes</h3>
+				<p><strong>Endpoint:</strong> <code>GET /api/quizzes</code>
+				<p><strong>Description:</strong> Retrives a complete list of all quizzes without pagination.</p>
+				<p><strong>Example Request:</strong></p>
+				<pre><code>GET http://127.0.0.1:5000/api/quizzes</code></pre>
+				<p><strong>Response:</strong></p>
+				<pre><code>{
+  "quizzes": [
+    {
+      "description": "This is a sample quiz.",
+      "id": 1,
+      "questions": [
+        {
+          "correct_option": "a",
+          "id": 1,
+          "option_a": "Paris",
+          "option_b": "London",
+          "option_c": "Berlin",
+          "option_d": "Madrid",
+          "text": "What is the capital of France?"
+        },
+        {
+          "correct_option": "b",
+          "id": 2,
+          "option_a": "3",
+          "option_b": "4",
+          "option_c": "5",
+          "option_d": "6",
+          "text": "What is 2 + 2?"
+        }
+      ],
+      "title": "Sample Quiz"
+    }
+  ],
+  "total": 1
+}</code></pre>
+			</div>
+		</div>
+	</div>
+{% endblock %}
