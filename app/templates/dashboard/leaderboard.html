@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+	<!-- Main container for the leaderboard page -->
+	<div class='container mt-5'>
+		<!-- Leaderboard header -->
+		<h1 class='text-center my-5'>Leaderboard</h1>
+
+		<!-- Row for displaying individual score cards -->
+		<div class='row'>
+			<!-- Loop through each score and display it in a card -->
+			{% for score in scores %}
+				<!-- Column for each score card -->
+				<div class='col-md-4 mb-4'>
+					<!-- Card displaying the score information -->
+					<div class='card h-100 shadow-sm'>
+						<div class='card-body'>
+							<!-- Rank and user name displayed at the top of the card -->
+							<h5 class='card-title'>
+								<span class='badge bg-primary'>Rank #{{ loop.index }}</span><br>
+								{{ score.user.name }} ({{ score.user.username }})
+							</h5>
+							<!-- Display the quiz title -->
+							<p class='card-text'>Quiz: {{ score.quiz.title }}</p>
+							<!-- Display the user's score percentage -->
+							<h3 class='card-text'><b>{{ score.percent }}%</b></h3>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
